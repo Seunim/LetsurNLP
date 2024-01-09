@@ -11,7 +11,7 @@ Official implementation for ACL 2023 accepted paper "HiTIN: Hierarchy-aware Tree
 text_total.json을 data/에 놓고
 LetsurNLP directory에서 
 ```shell
-python taxonomy.py -tp sum
+python taxonomy.py
 python hierarchy_tree_statistics.py config/tin-custom-roberta.json
 ```
 
@@ -74,6 +74,8 @@ An example of training HiTIN on WOS with **BERT** as the text encoder:
 ```shell
 python train.py -cfg config/tin-wos-bert.json -k 2 -b 12 -hd 768 -lr 1e-4 -tp sum
 ```
+
+파라미터 변경해보면서 해보세요~
 
 ## Citation
 If you found the provided code with our paper useful in your work, please **star** this repo and **cite** our paper!
