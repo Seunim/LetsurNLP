@@ -1,0 +1,14 @@
+2024/01/08 08:19:02 - INFO : Building Vocabulary....
+2024/01/08 08:19:02 - INFO : Loading Vocabulary from Cached Dictionary...
+2024/01/08 08:19:02 - INFO : Vocabulary of doc_token 50002
+2024/01/08 08:19:02 - INFO : Vocabulary of doc_label 296
+2024/01/08 08:19:13 - INFO : Loading 50-dimension token embedding from pretrained file: ./data/glove.6B.50d.txt
+2024/01/08 08:19:14 - INFO : Total vocab size of token is 50002.
+2024/01/08 08:19:14 - INFO : Pretrained vocab embedding has 49999 / 50002
+2024/01/08 08:19:41 - INFO : Building Vocabulary....
+2024/01/08 08:19:41 - INFO : Loading Vocabulary from Cached Dictionary...
+2024/01/08 08:19:41 - INFO : Vocabulary of doc_token 50002
+2024/01/08 08:19:41 - INFO : Vocabulary of doc_label 296
+2024/01/08 08:19:52 - INFO : Loading 50-dimension token embedding from pretrained file: ./data/glove.6B.50d.txt
+2024/01/08 08:19:53 - INFO : Total vocab size of token is 50002.
+2024/01/08 08:19:53 - INFO : Pretrained vocab embedding has 49999 / 50002

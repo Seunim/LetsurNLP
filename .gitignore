@@ -4,8 +4,22 @@ __pycache__
 !data/nyt.sh
 *.slurm
 
-!data/glove.6B.50d.txt
+data/glove.6B.50d.txt
 
-!ckpt
+ckpt
+
+data/text_total.json
+data/text_train.json
+data/text_prob.json
+data/text_val.json
+data/text_test.json
+vocab
+models/structure_model/.ipynb_checkpoints/
+train_modules/.ipynb_checkpoints/
+models/.ipynb_checkpoints/
+data/text.taxonomy
+data_modules/.ipynb_checkpoints/
+data/.ipynb_checkpoints/
+helper/.ipynb_checkpoints/
 
 
