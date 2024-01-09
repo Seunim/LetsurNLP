@@ -3,3 +3,9 @@ __pycache__
 *.sh
 !data/nyt.sh
 *.slurm
+
+!data/glove.6B.50d.txt
+
+!ckpt
+
+

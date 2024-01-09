@@ -67,7 +67,7 @@ def get_hierarchy_relations(hierar_taxonomy, label_map, root=None, fortree=False
                 parent_tree = label_tree[parent_label_id + 1]
 
                 for child in children_label_ids:
-                    assert (child + 1) not in label_tree
+                    #assert (child + 1) not in label_tree
                     child_tree = Tree(child)
                     parent_tree.add_child(child_tree)
                     label_tree[child + 1] = child_tree

@@ -61,7 +61,7 @@ class Trainer(object):
             else:
                 recursive_constrained_params = None
             loss = self.criterion(logits,
-                                  batch['label'].to(self.config.train.device_setting.device),
+                                  batch['doc_label'].to(self.config.train.device_setting.device),
                                   recursive_constrained_params)
             total_loss += loss.item()
 

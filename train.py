@@ -18,7 +18,7 @@ import numpy as np
 import pprint
 import warnings
 
-from transformers import BertTokenizer
+from transformers import AutoTokenizer
 from helper.lr_schedulers import get_linear_schedule_with_warmup
 from helper.adamw import AdamW
 
@@ -50,7 +50,7 @@ def train(config, args):
                          min_freq=5,
                          max_size=50000)
     if config.text_encoder.type == "bert":
-        tokenizer = BertTokenizer.from_pretrained(config.text_encoder.bert_model_dir)
+        tokenizer = AutoTokenizer.from_pretrained(config.text_encoder.bert_model_dir)
     else:
         tokenizer = None
 
@@ -77,7 +77,7 @@ def train(config, args):
 
     # Define training objective & optimizer
     criterion = ClassificationLoss(os.path.join(config.data.data_dir, config.data.hierarchy),
-                                   corpus_vocab.v2i['label'],
+                                   corpus_vocab.v2i['doc_label'],
                                    # recursive_penalty=config.train.loss.recursive_regularization.penalty,
                                    recursive_penalty=args.hierar_penalty,  # using args
                                    recursive_constraint=config.train.loss.recursive_regularization.flag)

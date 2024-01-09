@@ -64,7 +64,7 @@ def preprocess_line(sample):
     """
     sample = clean_str(sample.lstrip().rstrip())
     token_list = clean_stopwords(sample.split(' '))
-    return json.dumps({'token': token_list, 'label': []})
+    return json.dumps({'doc_token': token_list, 'doc_label': []})
 
 
 def preprocess_raw_file(file_path):
@@ -79,8 +79,8 @@ def preprocess_raw_file(file_path):
     with open(file_path, 'r') as f:
         for line in tqdm.tqdm(f):
             sample_tokens = preprocess_line(line)
-            raw_data.append({'token': line.rstrip(), 'label': []})
-            corpus_data.append(json.dumps({'token': sample_tokens, 'label': []}))
+            raw_data.append({'doc_token': line.rstrip(), 'doc_label': []})
+            corpus_data.append(json.dumps({'doc_token': sample_tokens, 'doc_label': []}))
     logger.info('The number of samples: {}'.format(len(corpus_data)))
     return raw_data, corpus_data
 

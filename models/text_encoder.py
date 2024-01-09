@@ -5,7 +5,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-from transformers import BertModel, BertPreTrainedModel
+from transformers import RobertaModel
 
 
 class GRU(nn.Module):
@@ -130,14 +130,14 @@ class TextEncoder(nn.Module):
         return topk_text_outputs
 
 
-class BertTextEncoder(BertPreTrainedModel):
+class BertTextEncoder(RobertaModel):
     def __init__(self, config):
         """
         Bert Encoder for text representation
         :param config: [warning] this config is not the customized config but the BertPretrainedConfig
         """
         super(BertTextEncoder, self).__init__(config)
-        self.bert = BertModel(config)
+        self.bert = RobertaModel(config)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
 
         self.init_weights()
