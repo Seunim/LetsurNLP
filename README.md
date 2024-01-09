@@ -4,69 +4,16 @@ Official implementation for ACL 2023 accepted paper "HiTIN: Hierarchy-aware Tree
 
 ## Requirements
 
-**It's hard to reproduce the results without the same devices and environment.** Although our code is highly compatible with mulitiple python environments, we strongly recommend that you create a new environment according to our settings.
-
-- Python == 3.7.13
-- numpy == 1.21.5
-- PyTorch == 1.11.0
-- scikit-learn == 1.0.2
-- transformers == 4.19.2
-- numba == 0.56.2
-- glove.6B.300d
+!pip install transformers
 
 ## Data preparation
 
-Please manage to acquire the original datasets and then run these scripts.
-
-### Web Of Science (WOS)
-
-The original dataset can be acquired freely in the repository of [HDLTex](https://github.com/kk7nc/HDLTex). Preprocess code could refer to the repository of [HiAGM](https://github.com/Alibaba-NLP/HiAGM). Please download the release of **WOS-46985(version 2)**, open `WebOfScience/Meta-data/Data.xls` and convert it to `.txt` format (Click "Save as" in Office Excel). Then, run:
+text_total.json을 data/에 놓고
+LetsurNLP directory에서 
 ```shell
-cd data
-python preprocess_wos.py
+python taxonomy.py -tp sum
+python hierarchy_tree_statistics.py config/tin-custom-roberta.json
 ```
-
-
-### NyTimes (NYT)
-
-The original dataset is available [here](https://catalog.ldc.upenn.edu/LDC2008T19) for a fee.  When you have fetched the original archive,  Unzip the files and make sure that the file path matches the indices in `data/idnewnyt_xxx.json`. Here we post our bash script in `nyt.sh` , which takes hours to accomplish the preprocessing (You could manage by your own way). 
-
-```shell
-cd data
-bash nyt.sh
-python preprocess_nyt.py
-```
-
-### RCV1-V2
-
-The preprocessing code could refer to the [repository of reuters_loader](https://github.com/ductri/reuters_loader) and we provide a copy here. The original dataset can be acquired [here](https://trec.nist.gov/data/reuters/reuters.html) by signing an agreement. It took us 1 data to receive a response.
-
-```shell
-cd data
-python data_rcv1.py
-python preprocess_rcv1.py
-```
-
-### Conduct experiments on your own data
-In [HiAGM](https://github.com/Alibaba-NLP/HiAGM), an additional step is required to count the prior probabilities between parent and child labels by running `python helper/hiearchy_tree_statistic.py`. HiTIN only requires unweighted adjacency matrix of label hierarchies but we still retain this property and save the statistics in `data/DATASET_prob.json` as we also implement baseline methods including TextRCNN, BERT-based HiAGM. 
-
-If you tend to evaluate these methods on your own dataset, please make sure to organize your data in the following format:
-```
-{
-    "doc_label": ["Computer", "MachineLearning", "DeepLearning", "Neuro", "ComputationalNeuro"],
-    "doc_token": ["I", "love", "deep", "learning"],
-    "doc_keyword": ["deep learning"],
-    "doc_topic": ["AI", "Machine learning"]
-}
-
-where "doc_keyword" and "doc_topic" are optional.
-```
-then, replace the label name with your dataset's in line143~146 of `helper/hierarchy_tree_statistics.py` and run:
-```shell
-python helper/hierarchy_tree_statistic.py
-```
-
-> Thanks to the superior framework open-sourced by [NeuralClassifier](https://github.com/Tencent/NeuralNLP-NeuralClassifier). You could also implement other methods in HTC or propose your own model.
 
 ## Train
 The default parameters are not the best performing-hyper-parameters used to reproduce our results in the paper. Hyper-parameters need to be specified through the commandline arguments. Please refer to our paper for the details of how we set the hyper-parameters.
