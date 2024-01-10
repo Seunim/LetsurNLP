@@ -8,7 +8,8 @@ Official implementation for ACL 2023 accepted paper "HiTIN: Hierarchy-aware Tree
 ```
 ## Data preparation
 
-text_total.json을 data/에 놓고
+text_total.json
+glove.6B.txt을 data/에 놓고
 LetsurNLP directory에서 
 ```shell
 python taxonomy.py
