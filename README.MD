@@ -73,3 +73,7 @@ optional arguments:
                         The beginning time of a run, which prefixes the name
                         of log files.
 ```
+
+```shell
+python train.py -cfg config/tin-custom-roberta.json ~~
+```
